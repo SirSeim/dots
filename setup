@@ -1,0 +1,67 @@
+#!/bin/bash
+# Get the containing directory.
+DOTS=$(cd "$(dirname "$0")" && pwd -P)
+
+# Symlink the rc files.
+for f in "$DOTS"/*rc; do
+  ln -s "$f" $HOME/.$(basename "$f")
+done
+
+# Symlink the remaining files.
+ln -s "$DOTS"/gitconfig "$HOME/.gitconfig"
+ln -s "$DOTS"/gitignore_global "$HOME/.gitignore_global"
+
+# Copy bash_profile as it can end up with sensitive material
+cp "$DOTS"/bash_profile "$HOME/.bash_profile"
+
+# Check if running on OSX.
+if [ "$(uname -s)" == 'Darwin' ]; then
+  if ! type brew 2>/dev/null; then
+    # Optionally install Homebrew.
+    read -e -n 1 -p 'Install Homebrew (y/N)? ' BREW
+    if [ "$BREW" == 'y' ]; then
+      ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    fi
+    # Optionally clear out dock.
+    read -e -n 1 -p 'Clear Dock (y/N)? ' DOCK
+    if [ "$DOCK" == 'y' ]; then
+      defaults write com.apple.dock persistent-apps -array
+      killall Dock
+    fi
+  fi
+fi
+
+# Setup Go environment
+GOPATH="$HOME/go"
+if [ ! -d "$GOPATH" ]; then
+  read -e -n 1 -p 'Create $GOPATH (y/N)? ' GO
+  if [ "$GO" == 'y' ]; then
+    mkdir -p "$GOPATH/src/github.com"
+  fi
+fi
+
+# Setup git environment
+GIT="$HOME/git"
+if [ ! -d "$GIT" ]; then
+  mkdir -p "$GIT"
+
+  # Work related git
+  read -e -n 1 -p 'Create git/embrace (y/N)? ' EMBRACE
+  if [ "$EMBRACE" == 'y' ]; then
+    mkdir -p "$GIT/embrace"
+
+    read -e -n 1 -p 'Link git/embrace to Go (y/N)? ' GOEMBRACE
+    if [ "$GOEMBRACE" == 'y' ]; then
+      ln -s "$HOME/git/embrace" "$GOPATH/src/github.com/embrace-io"
+    fi
+  fi
+fi
+
+# Setup Atom config
+ATOM="$HOME/.atom"
+if [ ! -d "$ATOM" ]; then
+  read -e -n 1 -p 'Setup Atom config (y/N)? ' GO
+  if [ "$GO" == 'y' ]; then
+    ln -s "$DOTS"/atom "$HOME/.atom"
+  fi
+fi

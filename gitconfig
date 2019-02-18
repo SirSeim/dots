@@ -1,0 +1,42 @@
+[color]
+	branch = auto
+	ui = true
+[color "branch"]
+	current = yellow bold
+	local = white
+	remote = yellow dim
+[color "diff"]
+	commit = yellow bold
+	frag = magenta bold
+	meta = yellow
+	new = green bold
+	old = red bold
+	whitespace = red reverse
+[color "status"]
+	added = cyan bold
+	branch = yellow bold
+	changed = red bold
+	untracked = magenta bold
+[alias]
+	br = branch
+	cm = commit
+	co = checkout
+	cr = checkout -b
+	df = diff
+	last = log --oneline -n 1
+	minlog = log --oneline
+	pn = push origin -u HEAD
+	pu = push
+	st = status
+	statlog = log --stat
+	taglist = tag -l --sort=-v:refname
+	tagl = tag -l --sort=-v:refname
+[credential]
+	helper = osxkeychain
+[push]
+	default = current
+[user]
+	name = Edward Seim
+	email = sirseim@gmail.com
+[core]
+	excludesfile = /Users/sirseim/.gitignore_global
