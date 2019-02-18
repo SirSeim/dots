@@ -56,12 +56,3 @@ if [ ! -d "$GIT" ]; then
     fi
   fi
 fi
-
-# Setup Atom config
-ATOM="$HOME/.atom"
-if [ ! -d "$ATOM" ]; then
-  read -e -n 1 -p 'Setup Atom config (y/N)? ' GO
-  if [ "$GO" == 'y' ]; then
-    ln -s "$DOTS"/atom "$HOME/.atom"
-  fi
-fi
