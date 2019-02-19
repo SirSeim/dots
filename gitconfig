@@ -23,6 +23,7 @@
 	co = checkout
 	cr = checkout -b
 	df = diff
+	fe = fetch -tpP
 	last = log --oneline -n 1
 	minlog = log --oneline
 	pn = push origin -u HEAD
