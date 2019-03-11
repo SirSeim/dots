@@ -28,6 +28,7 @@
 	minlog = log --oneline
 	pn = push origin -u HEAD
 	pu = push
+	pl = pull
 	st = status
 	statlog = log --stat
 	taglist = tag -l --sort=-v:refname
