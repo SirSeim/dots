@@ -26,9 +26,11 @@
 	fe = fetch -tpP
 	last = log --oneline -n 1
 	minlog = log --oneline
+	graph = log --color --graph --oneline
 	pn = push origin -u HEAD
 	pu = push
 	pl = pull
+	up = !git fetch -tpP && git pull
 	st = status
 	statlog = log --stat
 	taglist = tag -l --sort=-v:refname
