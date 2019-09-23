@@ -31,7 +31,7 @@
 	pu = push
 	pl = pull
 	up = !git fetch -tpP && git pull
-	st = status
+	st = !git branch && git status
 	statlog = log --stat
 	taglist = tag -l --sort=-v:refname
 	tagl = tag -l --sort=-v:refname
