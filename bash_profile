@@ -10,4 +10,6 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
 source /usr/local/bin/virtualenvwrapper.sh
 source /Users/sirseim/git/embrace/embrace-developer-extensions/edx
 
+export DOCKER_NETRC=$(cat ~/.netrc)
+
 # Security sensitive things below this. DO NOT COMMIT
