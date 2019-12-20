@@ -3,6 +3,7 @@ alias ..='cd ..'
 
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
+export BASH_SILENCE_DEPRECATION_WARNING=1
 
 export WORKON_HOME=~/virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
