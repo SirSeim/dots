@@ -23,6 +23,7 @@
 	co = checkout
 	cr = checkout -b
 	df = diff
+	ds = diff --staged
 	fe = fetch -tpP
 	last = log --oneline -n 1
 	minlog = log --oneline
