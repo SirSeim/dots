@@ -1,15 +1,21 @@
 alias ll='ls -laG'
 alias ..='cd ..'
 
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
-export WORKON_HOME=~/virtualenvs
-export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2.7
-source /usr/local/bin/virtualenvwrapper.sh
-source /Users/sirseim/git/embrace/embrace-developer-extensions/edx
+# Go and Python setup
+export GOPATH=$HOME/go
+export PYENV_ROOT=$HOME/.pyenv
+export PATH=$PYENV_ROOT/bin:$PATH:$GOPATH/bin
 
+# Complete pyenv setup
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+fi
+
+# Embrace setup
+source $HOME/git/embrace/embrace-developer-extensions/edx
 export DOCKER_NETRC=$(cat ~/.netrc)
 
 # Security sensitive things below this. DO NOT COMMIT

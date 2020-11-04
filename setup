@@ -21,6 +21,12 @@ if [ "$(uname -s)" == 'Darwin' ]; then
     read -e -n 1 -p 'Install Homebrew (y/N)? ' BREW
     if [ "$BREW" == 'y' ]; then
       ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+      # Optionally install pyenv.
+      read -e -n 1 -p 'Install pyenv (y/N)? ' PYENV_INSTALL
+      if [ "$PYENV_INSTALL" == 'y' ]; then
+        brew install pyenv pyenv-virtualenv
+      fi
     fi
     # Optionally clear out dock.
     read -e -n 1 -p 'Clear Dock (y/N)? ' DOCK
@@ -44,15 +50,15 @@ fi
 GIT="$HOME/git"
 if [ ! -d "$GIT" ]; then
   mkdir -p "$GIT"
+fi
 
-  # Work related git
-  read -e -n 1 -p 'Create git/embrace (y/N)? ' EMBRACE
-  if [ "$EMBRACE" == 'y' ]; then
-    mkdir -p "$GIT/embrace"
+# Work related git
+read -e -n 1 -p 'Create git/embrace (y/N)? ' EMBRACE
+if [ "$EMBRACE" == 'y' ]; then
+  mkdir -p "$GIT/embrace"
 
-    read -e -n 1 -p 'Link git/embrace to Go (y/N)? ' GOEMBRACE
-    if [ "$GOEMBRACE" == 'y' ]; then
-      ln -s "$HOME/git/embrace" "$GOPATH/src/github.com/embrace-io"
-    fi
+  read -e -n 1 -p 'Link git/embrace to Go (y/N)? ' GOEMBRACE
+  if [ "$GOEMBRACE" == 'y' ]; then
+    ln -s "$HOME/git/embrace" "$GOPATH/src/github.com/embrace-io"
   fi
 fi
