@@ -14,8 +14,4 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv virtualenv-init -)"
 fi
 
-# Embrace setup
-source $HOME/git/embrace/embrace-developer-extensions/edx
-export DOCKER_NETRC=$(cat ~/.netrc)
-
 # Security sensitive things below this. DO NOT COMMIT
