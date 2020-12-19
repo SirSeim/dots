@@ -20,19 +20,21 @@ if [ "$(uname -s)" == 'Darwin' ]; then
     # Optionally install Homebrew.
     read -e -n 1 -p 'Install Homebrew (y/N)? ' BREW
     if [ "$BREW" == 'y' ]; then
-      ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-      # Optionally install pyenv.
-      read -e -n 1 -p 'Install pyenv (y/N)? ' PYENV_INSTALL
-      if [ "$PYENV_INSTALL" == 'y' ]; then
-        brew install pyenv pyenv-virtualenv
-      fi
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     fi
     # Optionally clear out dock.
     read -e -n 1 -p 'Clear Dock (y/N)? ' DOCK
     if [ "$DOCK" == 'y' ]; then
       defaults write com.apple.dock persistent-apps -array
       killall Dock
+    fi
+  fi
+
+  if type brew 2>/dev/null; then
+    # Optionally install pyenv.
+    read -e -n 1 -p 'Install pyenv (y/N)? ' PYENV_INSTALL
+    if [ "$PYENV_INSTALL" == 'y' ]; then
+      brew install pyenv pyenv-virtualenv
     fi
   fi
 fi
