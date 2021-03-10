@@ -45,3 +45,5 @@
 	email = sirseim@gmail.com
 [core]
 	excludesfile = /Users/sirseim/.gitignore_global
+[pull]
+	rebase = false
