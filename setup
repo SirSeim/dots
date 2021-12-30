@@ -37,6 +37,14 @@ if [ "$(uname -s)" == 'Darwin' ]; then
       brew install pyenv pyenv-virtualenv
     fi
   fi
+
+  if type brew 2>/dev/null; then
+    # Optionally install go.
+    read -e -n 1 -p 'Install go (y/N)? ' GO_INSTALL
+    if [ "$GO_INSTALL" == 'y' ]; then
+      brew install go
+    fi
+  fi
 fi
 
 # Setup Go environment
