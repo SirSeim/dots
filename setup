@@ -45,6 +45,12 @@ if [ "$(uname -s)" == 'Darwin' ]; then
       brew install go
     fi
   fi
+
+  # Optionally install nvm.
+  read -e -n 1 -p 'Install nvm (y/N)? ' NVM_INSTALL
+    if [ "$NVM_INSTALL" == 'y' ]; then
+      curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+    fi
 fi
 
 # Setup Go environment
