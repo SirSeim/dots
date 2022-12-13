@@ -1,5 +1,9 @@
-alias ll='ls -laG'
+alias ll='ls -laGh'
 alias ..='cd ..'
+
+decode () {
+    echo "$1" | base64 -d | jq
+}
 
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
