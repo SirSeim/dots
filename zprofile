@@ -8,7 +8,7 @@ decode () {
 autoload -U +X compinit && compinit
 
 # Complete homebrew stuff
-if command -v brew 1>/dev/null 2>&1; then
+if [ -d /opt/homebrew/bin ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
