@@ -39,21 +39,25 @@ if [ "$(uname -s)" == 'Darwin' ]; then
     if [ "$PYENV_INSTALL" == 'y' ]; then
       brew install pyenv pyenv-virtualenv
     fi
-  fi
 
-  if type brew 2>/dev/null; then
     # Optionally install go.
     read -e -n 1 -p 'Install go (y/N)? ' GO_INSTALL
     if [ "$GO_INSTALL" == 'y' ]; then
       brew install go
     fi
-  fi
 
-  # Optionally install nvm.
-  read -e -n 1 -p 'Install nvm (y/N)? ' NVM_INSTALL
-    if [ "$NVM_INSTALL" == 'y' ]; then
-      curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+    # Optionally install jq.
+    read -e -n 1 -p 'Install jq (y/N)? ' JQ_INSTALL
+    if [ "$JQ_INSTALL" == 'y' ]; then
+      brew install jq
     fi
+
+    # Optionally install mysql-client.
+    read -e -n 1 -p 'Install mysql-client (y/N)? ' MYSQL_CLIENT_INSTALL
+    if [ "MYSQL_CLIENT_INSTALL" == 'y' ]; then
+      brew install mysql-client
+    fi
+  fi
 fi
 
 # Setup Go environment
