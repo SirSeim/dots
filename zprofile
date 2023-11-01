@@ -5,7 +5,12 @@ decode () {
     echo "$1" | base64 -d | jq
 }
 
-export BASH_SILENCE_DEPRECATION_WARNING=1
+autoload -U +X compinit && compinit
+
+# Complete homebrew stuff
+if command -v brew 1>/dev/null 2>&1; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 # Go and Python setup
 export GOPATH=$HOME/go
@@ -17,10 +22,5 @@ if command -v pyenv 1>/dev/null 2>&1; then
   eval "$(pyenv init -)"
   eval "$(pyenv virtualenv-init -)"
 fi
-
-# Complete nvm setup
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Security sensitive things below this. DO NOT COMMIT

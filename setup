@@ -11,8 +11,8 @@ done
 ln -s "$DOTS"/gitconfig "$HOME/.gitconfig"
 ln -s "$DOTS"/gitignore_global "$HOME/.gitignore_global"
 
-# Copy bash_profile as it can end up with sensitive material
-cp "$DOTS"/bash_profile "$HOME/.bash_profile"
+# Copy zprofile as it can end up with sensitive material
+cp "$DOTS"/zprofile "$HOME/.zprofile"
 
 # Check if running on OSX.
 if [ "$(uname -s)" == 'Darwin' ]; then
