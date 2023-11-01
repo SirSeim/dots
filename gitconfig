@@ -43,6 +43,8 @@
 [user]
 	name = Edward Seim
 	email = sirseim@gmail.com
+[github]
+	user = SirSeim
 [core]
 	excludesfile = /Users/sirseim/.gitignore_global
 [pull]
